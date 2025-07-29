@@ -35,9 +35,23 @@ local Window = Rayfield:CreateWindow({
 local MainTab = Window:CreateTab("🗿Home", nil)
 local MainSection = MainTab:CreateSection("Main")
 
-MainTab:CreateButton({
-   Name = "No Cooldown",
-   Callback = function()
+MainTab:CreateToggle({
+	Name = "Toggle Speed Hack",
+	CurrentValue = false,
+	Flag = "cf_toggle",
+	Callback = function(enabled)
+			local player = game:GetService("Players").LocalPlayer
+while true do
+    player.PlayerStats.Stamina.Value = 100
+    task.wait(0.000001)
+end,
+})
+	
+MainTab:CreateToggle({
+	Name = "No Cooldown",
+	CurrentValue = false,
+	Flag = "nocooldown_toggle",
+	Callback = function(enabled)
       local ReplicatedStorage = game:GetService("ReplicatedStorage")
       local C = require(ReplicatedStorage:WaitForChild("Controllers"):WaitForChild("AbilityController"))
       local o = C.AbilityCooldown
@@ -46,9 +60,11 @@ MainTab:CreateButton({
    end,
 })
 
-MainTab:CreateButton({
-   Name = "Inf Awakening",
-   Callback = function()
+MainTab:CreateToggle({
+	Name = "Inf Awakening",
+	CurrentValue = false,
+	Flag = "infawaken_toggle",
+	Callback = function(enabled)
       local Players = game:GetService("Players")
       local ReplicatedStorage = game:GetService("ReplicatedStorage")
       local StarterGui = game:GetService("StarterGui")
@@ -72,9 +88,11 @@ MainTab:CreateButton({
    end,
 })
 
-MainTab:CreateButton({
-   Name = "Anti Ragdoll",
-   Callback = function()
+MainTab:CreateToggle({
+	Name = "Anti Ragdoll",
+	CurrentValue = false,
+	Flag = "ragdoll_toggle",
+	Callback = function(enabled)
       local player = game.Players.LocalPlayer
       if player and player.Character and player.Character:FindFirstChild("RagdollRemote") then
          player.Character.RagdollRemote:Destroy()
