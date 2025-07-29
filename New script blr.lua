@@ -46,8 +46,7 @@ while true do
     task.wait(0.000001)
 			end
 		end
-	end
-end,
+	end,
 })
 	
 MainTab:CreateToggle({
