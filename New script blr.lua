@@ -4,8 +4,8 @@ local Window = Rayfield:CreateWindow({
    Name = "Sloppy GnG",
    Icon = 0,
    LoadingTitle = "SloppyGnG",
-   LoadingSubtitle = "by Slppy GnG",
-   ShowText = "Sloppy GnG",
+   LoadingSubtitle = "by Sloppy GnG",
+   Text = "Sloppy GnG",
    Theme = "Default",
    ToggleUIKeybind = "K",
    DisableRayfieldPrompts = false,
@@ -17,7 +17,7 @@ local Window = Rayfield:CreateWindow({
    },
    Discord = {
       Enabled = true,
-      Invite = "9KqBZtkg",
+      Invite = "https://discord.gg/Xf8Pf8N5U8",
       RememberJoins = true
    },
    KeySystem = false,
@@ -35,25 +35,22 @@ local Window = Rayfield:CreateWindow({
 local MainTab = Window:CreateTab("🗿Home", nil)
 local MainSection = MainTab:CreateSection("Main")
 
-MainTab:CreateToggle({
-	Name = "Toggle Speed Hack",
-	CurrentValue = false,
-	Flag = "cf_toggle",
-	Callback = function(enabled)
-			local player = game:GetService("Players").LocalPlayer
+local Toggle = MainTab:CreateToggle({
+   Name = "Inf Stamin",
+   CurrentValue = false,
+   Flag = "stamina_toggle", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(enabled)
+     local player = game:GetService("Players").LocalPlayer
 while true do
     player.PlayerStats.Stamina.Value = 100
     task.wait(0.000001)
-			end
-		end
-	end,
-})
-	
-MainTab:CreateToggle({
-	Name = "No Cooldown",
-	CurrentValue = false,
-	Flag = "nocooldown_toggle",
-	Callback = function(enabled)
+end
+
+local Toggle = MainTab:CreateToggle({
+   Name = "No Cooldown",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(enabled)
       local ReplicatedStorage = game:GetService("ReplicatedStorage")
       local C = require(ReplicatedStorage:WaitForChild("Controllers"):WaitForChild("AbilityController"))
       local o = C.AbilityCooldown
@@ -62,11 +59,11 @@ MainTab:CreateToggle({
    end,
 })
 
-MainTab:CreateToggle({
-	Name = "Inf Awakening",
-	CurrentValue = false,
-	Flag = "infawaken_toggle",
-	Callback = function(enabled)
+local Toggle = MainTab:CreateToggle({
+   Name = "Inf Awakening",
+   CurrentValue = false,
+   Flag = "Toggle2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(enabled)
       local Players = game:GetService("Players")
       local ReplicatedStorage = game:GetService("ReplicatedStorage")
       local StarterGui = game:GetService("StarterGui")
@@ -90,11 +87,11 @@ MainTab:CreateToggle({
    end,
 })
 
-MainTab:CreateToggle({
-	Name = "Anti Ragdoll",
-	CurrentValue = false,
-	Flag = "ragdoll_toggle",
-	Callback = function(enabled)
+local Toggle = MainTab:CreateToggle({
+   Name = "Anti Ragdoll",
+   CurrentValue = false,
+   Flag = "Toggle3", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(enabled)
       local player = game.Players.LocalPlayer
       if player and player.Character and player.Character:FindFirstChild("RagdollRemote") then
          player.Character.RagdollRemote:Destroy()
