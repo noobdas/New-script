@@ -44,6 +44,9 @@ MainTab:CreateToggle({
 while true do
     player.PlayerStats.Stamina.Value = 100
     task.wait(0.000001)
+			end
+		end
+	end
 end,
 })
 	
