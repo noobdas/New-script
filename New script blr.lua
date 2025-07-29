@@ -5,7 +5,7 @@ local Window = Rayfield:CreateWindow({
    Icon = 0,
    LoadingTitle = "SloppyGnG",
    LoadingSubtitle = "by Sloppy GnG",
-   Text = "Sloppy GnG",
+   ShowText = "Sloppy GnG",
    Theme = "Default",
    ToggleUIKeybind = "K",
    DisableRayfieldPrompts = false,
@@ -36,16 +36,17 @@ local MainTab = Window:CreateTab("🗿Home", nil)
 local MainSection = MainTab:CreateSection("Main")
 
 local Toggle = MainTab:CreateToggle({
-   Name = "Inf Stamin",
+   Name = "Inf stamina",
    CurrentValue = false,
-   Flag = "stamina_toggle", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Flag = "toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(enabled)
-     local player = game:GetService("Players").LocalPlayer
+   local player = game:GetService("Players").LocalPlayer
 while true do
     player.PlayerStats.Stamina.Value = 100
     task.wait(0.000001)
- end,
-)}
+end
+   end,
+})
 
 local Toggle = MainTab:CreateToggle({
    Name = "No Cooldown",
